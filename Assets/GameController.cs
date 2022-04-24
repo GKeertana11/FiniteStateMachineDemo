@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public sealed class GameController
 {
@@ -13,6 +14,7 @@ public sealed class GameController
             {
                 instance = new GameController();
                 instance.Checkpoints.AddRange(GameObject.FindGameObjectsWithTag("Checkpoint"));
+                instance.checkPoints = instance.checkPoints.OrderBy(x => x.name).ToList();
             }
             return instance;
         }
